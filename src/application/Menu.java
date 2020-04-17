@@ -26,6 +26,7 @@ public class Menu {
 	
 	public void start() {
 		String selection = "";
+		System.out.println("Shawn s.");
 		
 		do {
 			printMenu();

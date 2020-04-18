@@ -26,8 +26,7 @@ public class Menu {
 	
 	public void start() {
 		String selection = "";
-		System.out.println("Shawn s.");
-		
+				
 		do {
 			printMenu();
 			selection = scanner.nextLine();
@@ -78,6 +77,7 @@ public class Menu {
 		
 		productsDao.updateProductById(name, type, id);
 		System.out.println("Product " + id + " has been successfully updated.\n");
+
 		displayProducts();
 			
 		
@@ -85,6 +85,8 @@ public class Menu {
 
 	private void deleteAnOrder() throws SQLException {
 		int id = 0;
+		
+		displayOrders();
 		
 		do {
 		System.out.print("Please enter the order Id number you'd like to delete:");
@@ -94,6 +96,10 @@ public class Menu {
 		
 		ordersDao.deleteOrderById(id);
 		System.out.println("Deleted order number: " + id);
+		
+	}
+
+	private void displayOrders() {
 		
 	}
 

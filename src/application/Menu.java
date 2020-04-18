@@ -1,6 +1,7 @@
 package application;
 
 import java.sql.SQLException;
+import java.util.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Scanner;
 import dao.CustomersDao;
 import dao.OrdersDao;
 import dao.ProductsDao;
+import entity.Customer;
 import entity.Product;
 
 public class Menu {
@@ -19,8 +21,9 @@ public class Menu {
 	private List<String> options = Arrays.asList(
 			"Display all Products",
 			"Create Customer",
-			"Delete a Order",
+			"Delete an Order",
 			"Edit Product",
+			"Search for Customer",
 			"Exit");
 	
 	
@@ -40,6 +43,8 @@ public class Menu {
 				deleteAnOrder();
 			} else if (selection.equals("4")) {
 				editProduct();
+			} else if (selection.equals("5")) {
+				findCustomer();
 			}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -47,7 +52,7 @@ public class Menu {
 			System.out.println("Press enter to continue...");
 			scanner.hasNextLine();
 			
-		} while(!selection.equals("5"));
+		} while(!selection.equals("6"));
 		
 	}
 
@@ -60,7 +65,7 @@ public class Menu {
 		System.out.print("Please select which product you would like to edit: ");
 		id = Integer.parseInt(scanner.nextLine());
 		do {
-			System.out.print("What would you like to change the name too: ");
+			System.out.print("What would you like to change the name to?");
 			name = scanner.nextLine();
 			if(name.isEmpty()) {
 				System.out.println("Name cannot be empty. Please try again...");
@@ -68,7 +73,7 @@ public class Menu {
 		}while(name.isEmpty());
 		
 		do {
-			System.out.print("What would you like to change the type too: ");
+			System.out.print("What would you like to change the type to?");
 			type = scanner.nextLine();
 			if(type.isEmpty()) {
 				System.out.println("Type cannot be empty. Please try again...");
@@ -116,6 +121,15 @@ public class Menu {
 		
 		
 	}
+	private void findCustomer() throws SQLException {
+		System.out.print("Please enter your customer ID: ");
+		int id = Integer.parseInt(scanner.nextLine());
+		Customer customer = customerDao.findCustomer(id);
+		System.out.println("Customer ID: " + id + "Customer First Name: " +  customer.getFirst()  + "Customer Last Name: " + customer.getLast());
+		
+
+		
+}
 
 	private void displayProducts() throws SQLException {
 		List<Product> products = productsDao.getAllProducts();

@@ -11,6 +11,7 @@ import dao.CustomersDao;
 import dao.OrdersDao;
 import dao.ProductsDao;
 import entity.Customer;
+import entity.Order;
 import entity.Product;
 
 public class Menu {
@@ -24,6 +25,7 @@ public class Menu {
 			"Delete an Order",
 			"Edit Product",
 			"Search for Customer",
+			"Display all Orders",
 			"Exit");
 	
 	
@@ -45,14 +47,16 @@ public class Menu {
 				editProduct();
 			} else if (selection.equals("5")) {
 				findCustomer();
-			}
+			} else if (selection.contentEquals("6")) {
+				displayOrders();
+				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 			System.out.println("Press enter to continue...");
 			scanner.hasNextLine();
 			
-		} while(!selection.equals("6"));
+		} while(!selection.equals("7"));
 		
 	}
 
@@ -104,7 +108,11 @@ public class Menu {
 		
 	}
 
-	private void displayOrders() {
+	private void displayOrders() throws SQLException {
+		List<Order> orders = ordersDao.getAllOrders();
+		for(Order order: orders) {
+			System.out.println(order.toString());
+		}
 		
 	}
 

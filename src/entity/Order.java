@@ -12,7 +12,7 @@ public class Order {
 		this.setProductId(productId);
 	}
 
-	public int getId(id) {
+	public int getId() {
 		return id;
 	}
 

@@ -140,11 +140,10 @@ public class Menu {
 		System.out.print("Please enter your customer ID: ");
 		int id = Integer.parseInt(scanner.nextLine());
 		Customer customer = customerDao.findCustomer(id);
-		System.out.println("Customer ID: " + id + "Customer First Name: " +  customer.getFirst()  + "Customer Last Name: " + customer.getLast());
+		System.out.println("Customer ID: " + id + " Customer First Name: " +  customer.getFirst()  + " Customer Last Name: " + customer.getLast());
 		
 
-		
-}
+	} 
 
 	private void displayProducts() throws SQLException {
 		List<Product> products = productsDao.getAllProducts();

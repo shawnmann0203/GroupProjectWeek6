@@ -35,5 +35,8 @@ public class Order {
 	public void setProductId(int productId) {
 		this.productId = productId;
 	}
+	public String toString() {
+		return "ID: " + this.id + " Customer ID: " + this.customerId + " Product ID: " + this.productId;
+	}
 
 }
